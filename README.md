@@ -1,0 +1,1 @@
+TeleCare is a backend system designed to serve patients and doctors by enabling remote healthcare access. It allows patients to search for doctors, book virtual appointments, manage their health records, and receive medical notes and prescriptions online. The system prioritizes underserved areas by improving accessibility and convenience through digital healthcare tools.
