@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'users',
     'appointments',
-    'medical_records'
+    'medical_records',
+    'patients'
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES" : (
