@@ -4,4 +4,7 @@ from .models import Patients
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patients
-        fields = '__all__'
+        fields = fields = ['id', 'name', 'age', 'condition', 'created_at']
+        read_only_fields = ['id', 'created_at']
+
+
