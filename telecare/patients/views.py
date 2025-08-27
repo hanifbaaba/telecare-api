@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions,  generics
 from .models import Patients
 from .serializers import PatientSerializer
+# from rest_framework import generics, permissions
+from prescriptions.serializers import PrescriptionsSerializer
+from prescriptions.models import Prescriptions
 
 class PatientViewSet(viewsets.ModelViewSet):
     # queryset = Patients.objects.all()
@@ -16,3 +19,13 @@ class PatientViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+# class PrescriptionViewSet(generics.ListAPIView):
+#     queryset = Prescriptions.objects.all()
+#     serializer_class = PrescriptionsSerializer
+#     permission_classes = [permissions.IsAuthenticated]
+
+# class PrescriptionCreateView(generics.CreateAPIView):
+#     queryset = Prescriptions.objects.all()
+#     serializer_class = PrescriptionsSerializer
+#     permission_classes = [permissions.IsAuthenticated]

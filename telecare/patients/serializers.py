@@ -7,4 +7,3 @@ class PatientSerializer(serializers.ModelSerializer):
         fields = fields = ['id', 'name', 'age', 'condition', 'created_at']
         read_only_fields = ['id', 'created_at']
 
-

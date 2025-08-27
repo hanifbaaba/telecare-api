@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'users',
     'appointments',
     'medical_records',
-    'patients'
+    'patients',
+    'prescriptions'
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES" : (
