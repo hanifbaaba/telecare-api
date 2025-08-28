@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied, ValidationError, MethodNotAllowed
 from .models import Appointment
 from .serializers import AppointmentSerializer
+from django.core.mail import send_mail
+from rest_framework import generics
 
 User = get_user_model()
 class AppointmentViewSet(viewsets.ModelViewSet):
@@ -82,3 +84,19 @@ class AppointmentViewSet(viewsets.ModelViewSet):
         appt.status = Appointment.Status.CANCELLED
         appt.save(update_fields=["status", "updated_at"])
         return Response(AppointmentSerializer(appt).data)
+
+
+    def perform_update(self, serializer):
+        appointment = serializer.save()
+        patient_email = appointment.patient.email
+        status = appointment.status  
+
+        send_mail(
+            subject=f"Your Appointment was {status.capitalize()}",
+            message=f"Dear {appointment.patient.name},\n\n"
+                    f"Your appointment with Dr. {appointment.doctor.name} "
+                    f"on {appointment.date} was {status}.",
+            from_email=None,  
+            recipient_list=[patient_email],
+            fail_silently=False,
+        )
