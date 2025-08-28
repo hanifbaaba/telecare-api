@@ -8,7 +8,8 @@ class Patients(models.Model):
     age = models.IntegerField()
     condition = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    email = models.EmailField(unique=True)  
+    email = models.EmailField(unique=True, blank=True, null=True)
+
 
 
     def __str__(self):
