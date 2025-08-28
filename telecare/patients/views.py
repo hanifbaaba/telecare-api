@@ -20,12 +20,3 @@ class PatientViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-# class PrescriptionViewSet(generics.ListAPIView):
-#     queryset = Prescriptions.objects.all()
-#     serializer_class = PrescriptionsSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-
-# class PrescriptionCreateView(generics.CreateAPIView):
-#     queryset = Prescriptions.objects.all()
-#     serializer_class = PrescriptionsSerializer
-#     permission_classes = [permissions.IsAuthenticated]
